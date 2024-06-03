@@ -20,6 +20,9 @@ public class BoardDTO {
     private int boardHits;
     private LocalDateTime boardCreatedTime;
     private LocalDateTime boardUpdatedTime;
+    private int fileAttached;
+
+
 
     public static BoardDTO toBoardDTO(BoardEntity boardEntity) {
         BoardDTO boardDTO = new BoardDTO();
