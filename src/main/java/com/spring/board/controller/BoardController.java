@@ -3,6 +3,10 @@ package com.spring.board.controller;
 import com.spring.board.dto.BoardDTO;
 import com.spring.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -69,5 +73,13 @@ public class BoardController {
 
         boardService.deleteById(id);
         return "redirect:/board/";
+    }
+
+    //paging 처리
+    @GetMapping("/paging")
+    public String paging(@PageableDefault(page = 1) Pageable pageable, Model model) {
+
+        Page<BoardDTO> boardList = (Page<BoardDTO>) boardService.paging(pageable);
+
     }
 }
